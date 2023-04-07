@@ -23,7 +23,11 @@ Route::get('/', function () {
 });
 
 Route::get('/about', function () {
-    return view('about'); 
+    return view('about', [
+        "name" => "Avriansyah Bahtiar",
+        "email" => "avriansyah@gmail.com",
+        "image" => "kura.jpg"
+    ]); 
 });
 
 Route::get('/blog', function () {

@@ -9,8 +9,8 @@
 </head>
 <body>
     <h1>Halaman About</h1>
-    <h3>Avriansyah Bahtiar</h3>
-    <p>avriansyah@gmail.com</p>
-    <img src="img/kura.jpg" alt="kura">
+    <h3><?= $name ?></h3>
+    <h3><?= $email ?></h3>
+    <img src="img/<?= $image ?>" alt="<?= $name?>">
 </body>
 </html>
