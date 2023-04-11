@@ -2,8 +2,10 @@
 
 @section('container')
     <article>
-        <h2> {{ $post["title"] }}</h2>
-        <h5> By: {{ $post["author"] }}</h5>
-        <p>{{ $post["body"] }}</p>
+        <h2> {{ $post->title }}</h2>
+
+        {{-- kurung ini berfungsi untuk menjalankan semua perintah html walaupun ada di text jika memakai kurung biasa tidak bisa --}}
+        {!! $post->body !!}
+ 
     <a href="/posts">Back to Post</a>
 @endsection
