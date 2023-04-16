@@ -20,8 +20,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(3)->create();
 
-        Post::factory(20)->create();
-
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
@@ -46,9 +44,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Category::create([
+            'name' => 'Web Design',
+            'slug' => 'web-design'
+        ]);
+
+        Category::create([
             'name' => 'Personal',
             'slug' => 'personal'
         ]);
+
+        Post::factory(20)->create();
 
         // Post::create([
         //     'title' => 'Judul Pertama',
