@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
+        dd(request(('search')));
         return view('posts', [
             "title" => "All Posts",
             "active" => 'posts',
