@@ -17,10 +17,18 @@ class Post extends Model
     protected $with = ['category', 'author'];
 
     public function scopeFilter($query, array $filters) {
-        if(isset($filters['search']) ? $filters['search'] : false) {
-            return $query->where('title', 'like', '%'.$filters['search'].'%')
-            ->orWhere('body','like','%'.$filters['search'].'%');
-        }
+
+        // alternatif pertama
+        // if(isset($filters['search']) ? $filters['search'] : false) {
+        //     return $query->where('title', 'like', '%'.$filters['search'].'%')
+        //     ->orWhere('body','like','%'.$filters['search'].'%');
+        // }
+
+        // rekomendasi sintax
+        $query->when($filters['search'] ?? false, function($query, $search){
+            return $query->where('title', 'like', '%'.$search.'%')
+            ->orWhere('body','like','%'.$search.'%');
+        });
     }
 
     public function category() {
