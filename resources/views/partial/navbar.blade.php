@@ -20,9 +20,9 @@
                     <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">Categories</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a href="/login" class="nav-link">Login</a>
+                    <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 </li>
             </ul>
         </div>
