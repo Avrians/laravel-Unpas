@@ -7,7 +7,7 @@
     <main class="form-registration w-100 m-auto">
       <h1 class="h3 mb-3 fw-normal text-center">Form Registration</h1>
         
-        <form>
+        <form action="/register" method="POST">
           <div class="form-floating">
             <input type="text" name="name" class="form-control rounded-top" id="name" placeholder="Name">
             <label for="name">Name</label>
