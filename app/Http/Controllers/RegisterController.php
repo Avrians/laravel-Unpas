@@ -13,7 +13,24 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store() {
-        return request()->all();
+    // cara pertama
+    // public function store(Request $request) {
+    //     return $request->all();
+    // }
+
+    // cara kedua
+    // public function store() {
+    //     return request()->all();
+    // }
+
+    public function store(Request $request) {
+        $request->validate([
+            'name' => 'required|max:255', // formatnya bisa begini
+            'username' => ['required', 'min:3', 'max:255', 'unique:users'],  // atau begini
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|max:255'
+        ]);
+
+        dd('registerasi berhasil');
     }
 }
