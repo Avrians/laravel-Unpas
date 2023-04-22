@@ -8,6 +8,7 @@
       <h1 class="h3 mb-3 fw-normal text-center">Form Registration</h1>
         
         <form action="/register" method="POST">
+          @csrf
           <div class="form-floating">
             <input type="text" name="name" class="form-control rounded-top" id="name" placeholder="Name">
             <label for="name">Name</label>
