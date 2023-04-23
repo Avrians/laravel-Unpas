@@ -29,4 +29,17 @@ class LoginController extends Controller
 
         return back()->with('loginEror', 'Login failed');
     }
+
+    public function logout(Request $request) {
+        Auth::logout();
+
+        // untuk menonaktifkan validasi session
+        $request->session()->invalidate();
+
+        // membuat token sesion baru
+        $request->session()->regenerateToken();
+
+        // mau diarahkan kemana
+        return redirect('/');
+    }
 }
