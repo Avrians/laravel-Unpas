@@ -50,4 +50,9 @@ class Post extends Model
     public function author() {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // untuk mendefinisikan route untuk mencari variabel selain id
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }

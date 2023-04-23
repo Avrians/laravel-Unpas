@@ -22,7 +22,9 @@
           <td>{{ $post->title }}</td>
           <td>{{ $post->category->name }}</td>
           <td>
-            <a href=""><span data-feather="eye" class="align-text-bottom"></span></a>
+            <a href="/dashboard/posts/{{ $post->slug }}"><span data-feather="eye" class="align-text-bottom bg-info rounded"></span></a>
+            <a href="#"><span data-feather="edit" class="align-text-bottom bg-warning rounded"></span></a>
+            <a href=""><span data-feather="x-circle" class="align-text-bottom bg-danger rounded"></span></a>
           </td>
         </tr>
       @endforeach
