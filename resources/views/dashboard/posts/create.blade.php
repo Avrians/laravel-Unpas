@@ -18,6 +18,17 @@
             <input type="text" class="form-control" id="slug" name="slug" disabled readonly>
         </div>
 
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" name="category_id">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+              </select>
+        </div>
+
+        
+
         <button type="submit" class="btn btn-primary">Create Post</button>
     </form>
 </div>
