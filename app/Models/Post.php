@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // ini yang boleh di isi sisa nya ngga boleh
     // protected $fillable = ['title', 'excerpt', 'body'];
@@ -54,5 +55,14 @@ class Post extends Model
     // untuk mendefinisikan route untuk mencari variabel selain id
     public function getRouteKeyName(){
         return 'slug';
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }
