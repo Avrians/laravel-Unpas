@@ -32,8 +32,6 @@
             <trix-editor input="body"></trix-editor>
         </div>
 
-        
-
         <button type="submit" class="btn btn-primary">Create Post</button>
     </form>
 </div>
@@ -47,6 +45,10 @@
             .then(response => response.json())
             .then(data => slug.value = data.slug)
     });
+
+    document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+    }) 
 </script>
 
 @endsection  
