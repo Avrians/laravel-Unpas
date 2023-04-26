@@ -8,7 +8,11 @@
 
             <a href="/dashboard/posts" class="btn btn-success"> <span data-feather="arrow-left" class="arrow-left"></span> Back to all my posts</a>
             <a href="" class="btn btn-warning"> <span data-feather="edit" class="arrow-left"></span> Edit</a>
-            <a href="" class="btn btn-danger"> <span data-feather="x-circle" class="arrow-left"></span> Delete</a>
+            <form action="/dashboard/posts/{{ $post->slug }}" method="POST" class="d-inline">
+                @method('delete')
+                @csrf
+                <button class="btn btn-danger " onclick="return confirm('Are you sure?')"><span data-feather="x-circle" class="align-text-bottom bg-danger rounded"></span> Delete</button>
+                </form> 
 
             <h1 class="my-3"> {{ $post->title }}</h1>
 
