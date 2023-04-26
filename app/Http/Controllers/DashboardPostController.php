@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -109,14 +110,19 @@ class DashboardPostController extends Controller
             'image' => 'image|file|max:1024',
             'body' => 'required'
         ];
-
         
         if($request->slug != $post->slug) {
             $rules['slug'] = 'required|unique:posts';
         }
         
-        $validatedData = $request->validate($rules);
         $validatedData2 = $request->validate($rules);
+
+        if($request->file('image')) {
+            if($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData2['image'] = $request->file('image')->store('post-images');
+        }
 
         $validatedData2['user_id'] = auth()->user()->id;
         $validatedData2['excerpt'] = Str::limit(strip_tags($request->body), 200);
@@ -136,6 +142,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if($post->image) {
+            Storage::delete($post->image);
+        }
         
         Post::destroy($post->id);
 
