@@ -7,7 +7,7 @@
 
 <div class="col-lg-8">  
     <form method="POST" action="/dashboard/posts/{{ $post->slug }}" class="mb-5">
-        @method('put')
+        @method('patch')
         @csrf
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
@@ -46,7 +46,7 @@
             @error('body')
             <p class="text-danger">{{ $message }}</p>
             @enderror
-            <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
+            <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}" required>
             <trix-editor input="body"></trix-editor>
         </div>
 
