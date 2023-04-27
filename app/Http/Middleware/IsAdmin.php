@@ -16,9 +16,12 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || auth()->user()->username !== 'avriansyah' ){
+        if(auth()->guest() || !auth()->user()->is_admin ){
             abort(403);
         }
+        // if(auth()->guest() || auth()->user()->username !== 'avriansyah' ){
+        //     abort(403);
+        // }
         return $next($request);
     }
 }
